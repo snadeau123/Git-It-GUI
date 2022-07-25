@@ -204,7 +204,7 @@ namespace GitItGUI.Core
 						}
 
 						// submodules
-						if (repository.hasSubmodules)
+						if (repository.hasSubmodules && AppManager.settings.autoPullModules)
 						{
 							if (repository.areSubmodulesInit)
 							{

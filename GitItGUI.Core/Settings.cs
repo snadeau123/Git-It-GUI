@@ -42,6 +42,7 @@ namespace GitItGUI.Core
 			[XmlElement("SimpleMode")] public bool simpleMode = true;
 			[XmlElement("CustomErrorCodes")] public CustomErrorCodes customErrorCodes = new CustomErrorCodes();
 			[XmlElement("Repository")] public List<string> repositories = new List<string>();
+			[XmlElement("AutoPullModules")] public bool autoPullModules = true;
 		}
 	}
 	
