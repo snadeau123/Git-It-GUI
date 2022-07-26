@@ -44,6 +44,26 @@ namespace GitCommander
 			}
 		}
 
+		public (string output, string errors) GitInvoke(string args, string workingDirectory = null,
+			StdInputStreamCallbackMethod stdInputStreamCallback = null, GetStdInputStreamCallbackMethod getStdInputStreamCallback = null,
+			GetStdOutputStreamCallbackMethod getStdOutputStreamCallback = null,
+			StdCallbackMethod stdCallback = null, StdCallbackMethod stdErrorCallback = null,
+			bool stdResultOn = true, bool stdErrorResultOn = true,
+			string stdOutToFilePath = null, Stream stdOutToStream = null
+		)
+		{
+			lock (this)
+			{
+				var result = RunExe("git", args, workingDirectory: workingDirectory, stdInputStreamCallback: stdInputStreamCallback,
+					getStdInputStreamCallback: getStdInputStreamCallback, getStdOutputStreamCallback: getStdOutputStreamCallback,
+					stdCallback: stdCallback, stdErrorCallback: stdErrorCallback, stdResultOn: stdResultOn, stdErrorResultOn: stdErrorResultOn,
+					stdOutToFilePath: stdOutToFilePath, stdOutToStream: stdOutToStream);
+				lastResult = result.output;
+				lastError = result.errors;
+				return result;
+			}
+		}
+
 		private bool SimpleGitInvoke(string args, StdCallbackMethod stdCallback = null, StdCallbackMethod stdErrorCallback = null)
 		{
 			lock (this)
