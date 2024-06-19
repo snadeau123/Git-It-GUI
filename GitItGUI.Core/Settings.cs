@@ -38,8 +38,8 @@ namespace GitItGUI.Core
 			[XmlElement("ChangesPanelCommitDiffVD")] public double changesPanelCommitDiffVD = -1;
 			[XmlElement("MergeDiffTool")] public MergeDiffTools mergeDiffTool = MergeDiffTools.P4Merge;
 			[XmlElement("AutoRefreshChanges")] public bool autoRefreshChanges = true;
-			[XmlElement("ShowLFSTag")] public bool showLFSTags = false;
-			[XmlElement("SimpleMode")] public bool simpleMode = true;
+			[XmlElement("ShowLFSTag")] public bool showLFSTags = true;
+			[XmlElement("SimpleMode")] public bool simpleMode = false;
 			[XmlElement("CustomErrorCodes")] public CustomErrorCodes customErrorCodes = new CustomErrorCodes();
 			[XmlElement("Repository")] public List<string> repositories = new List<string>();
 			[XmlElement("AutoPullModules")] public bool autoPullModules = true;

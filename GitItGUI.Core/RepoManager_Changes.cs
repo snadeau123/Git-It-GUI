@@ -919,7 +919,7 @@ namespace GitItGUI.Core
 					// ======================================
 					#region Binary
 					// check if files are binary (if so open select binary file tool) [if file conflict is because of deletion this method is also used]
-					if (fileState.conflictType != FileConflictTypes.Changes || Tools.IsBinaryFileData(fullPathOurs) || Tools.IsBinaryFileData(fullPathTheirs))
+					if (fileState.conflictType != FileConflictTypes.Changes || Tools.IsBinaryFileData(fullPathOurs) || Tools.IsBinaryFileData(fullPathTheirs) || fileState.isLFS)
 					{
 						// validate callback
 						if (AskUserToResolveConflictedFileCallback == null) return false;
