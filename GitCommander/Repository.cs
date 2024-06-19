@@ -49,7 +49,8 @@ namespace GitCommander
 			GetStdOutputStreamCallbackMethod getStdOutputStreamCallback = null,
 			StdCallbackMethod stdCallback = null, StdCallbackMethod stdErrorCallback = null,
 			bool stdResultOn = true, bool stdErrorResultOn = true,
-			string stdOutToFilePath = null, Stream stdOutToStream = null
+			string stdOutToFilePath = null, Stream stdOutToStream = null,
+			bool invokeDebugCallback = true
 		)
 		{
 			lock (this)
@@ -57,7 +58,7 @@ namespace GitCommander
 				var result = RunExe("git", args, workingDirectory: workingDirectory, stdInputStreamCallback: stdInputStreamCallback,
 					getStdInputStreamCallback: getStdInputStreamCallback, getStdOutputStreamCallback: getStdOutputStreamCallback,
 					stdCallback: stdCallback, stdErrorCallback: stdErrorCallback, stdResultOn: stdResultOn, stdErrorResultOn: stdErrorResultOn,
-					stdOutToFilePath: stdOutToFilePath, stdOutToStream: stdOutToStream);
+					stdOutToFilePath: stdOutToFilePath, stdOutToStream: stdOutToStream, invokeDebugCallback: invokeDebugCallback);
 				lastResult = result.output;
 				lastError = result.errors;
 				return result;

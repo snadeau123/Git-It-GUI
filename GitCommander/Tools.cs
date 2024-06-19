@@ -39,10 +39,13 @@ namespace GitCommander
 			GetStdOutputStreamCallbackMethod getStdOutputStreamCallback = null,
 			StdCallbackMethod stdCallback = null, StdCallbackMethod stdErrorCallback = null,
 			bool stdResultOn = true, bool stdErrorResultOn = true,
-			string stdOutToFilePath = null, Stream stdOutToStream = null
+			string stdOutToFilePath = null, Stream stdOutToStream = null, bool invokeDebugCallback = true
 		)
 		{
-			if (RunExeDebugLineCallback != null) RunExeDebugLineCallback(string.Format("GitCommander: {0} {1}", exe, arguments));
+			if (invokeDebugCallback && RunExeDebugLineCallback != null)
+			{
+				RunExeDebugLineCallback(string.Format("GitCommander: {0} {1}", exe, arguments));
+			}
 			if (stdCallback != null) stdResultOn = false;
 
 			string output = "", errors = "";
@@ -75,7 +78,10 @@ namespace GitCommander
 					}
 					else
 					{
-						if (StdCallback != null) StdCallback(line);
+						if (invokeDebugCallback && StdCallback != null)
+						{
+							StdCallback(line);
+						}
 					}
 				});
 				
